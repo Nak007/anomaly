@@ -22,7 +22,7 @@ from matplotlib import cm
 from Utils import _get_argument, _is_array_like, _to_DataFrame
 
 __all__ = ['matplotlib_cmap', 'create_cmap', 
-           'plot_pie', 'plot_radar', 'plot_pcs']
+           'plot_pie', 'plot_radar', 'plot_pcs', 'plot_barh']
     
 def matplotlib_cmap(name='tab20', n=10):
 
