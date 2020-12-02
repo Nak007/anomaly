@@ -249,7 +249,7 @@ class outliers:
         self._check_values()
         
         # Convert `X` to `pd.DataFrame`
-        df = _to_DataFrame(X)
+        df = _to_DataFrame(X).copy()
         a, columns = df.values, df.columns
         self.limit_ = dict(variable=columns, 
                            lower=[None]*df.shape[1], 
