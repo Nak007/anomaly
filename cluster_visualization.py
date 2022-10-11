@@ -31,9 +31,21 @@ from mpl_toolkits.axes_grid1 import Grid
 from itertools import product
 from sklearn.linear_model import LogisticRegression
 
-plt.rcParams.update({'font.family':'sans-serif'})
-plt.rcParams.update({'font.sans-serif':'Hiragino Sans GB'})
-plt.rc('axes', unicode_minus=False)
+# Adding fonts
+from matplotlib import font_manager
+paths = font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
+for font_path in paths:
+    if font_path.find("Hiragino Sans GB W3")>-1: 
+        try:
+            font_manager.fontManager.addfont(font_path)
+            prop = font_manager.FontProperties(fname=font_path)
+            plt.rcParams['font.family'] = 'sans-serif'
+            plt.rcParams['font.sans-serif'] = prop.get_name()
+            plt.rcParams.update({'font.family':'sans-serif'})
+            plt.rcParams.update({'font.sans-serif':prop.get_name()})
+            plt.rc('axes', unicode_minus=False)
+            break
+        except:pass
 
 __all__  = ["matplotlib_cmap", "create_cmap",
             "cluster_pie", 
